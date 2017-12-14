@@ -1,0 +1,115 @@
+<div class="container">
+	<img alt="" src="{{banner_url}}" class="img-fluid" />
+	<h1 class="display-1">{{title}}</h1>
+
+	<iframe title="" width="560" height="315" src="{{video_embed_url}}" frameborder="0" gesture="media" allow="encrypted-media"
+	 allowfullscreen style="width:50%"></iframe>
+
+	<h2>Features</h2>
+	<center><div class="row">
+		{{#each features as f, i}}
+		<div class="card" style="width:33%;" allign="center">
+			<img alt="" src="{{f.image_url}}" class="card-img-top">
+			<div class="card-body">
+				<h4 class="card-title">{{f.feature}}</h4>
+				<p class="card-text">{{f.desc}}</p>
+			</div>
+		</div>
+		{{/each}}
+	</div>
+
+	<h2>Rewards</h2>
+	<table class="table">
+		<tbody>
+			{{#each rewards as r, i}}
+			<tr>
+				<th scope="row" style="text-align:right">{{r.cost}} meals</th>
+				<td>{{r.desc}}</td>
+			</tr>
+			{{/each}}
+		</tbody>
+	</table>
+
+	<h2>Timeline</h2>
+	<div class="row">
+		{{#each timeline as t, i}}
+		<div class="card">
+			<div class="card-body">
+				<h3 class="card-title" style="font-weight:bold;">{{t.date}}</h3>
+				<p class="card-text">{{t.desc}}</p>
+				
+			</div>
+		</div>
+		{{/each}}
+	</div>
+
+	<h2>The Team</h2>
+	<div class="row">
+		{{#each team as t, i}}
+		<div class="card" style="width:33%;">
+			<img alt="" src="{{t.image_url}}" class="card-img-top">
+			<div class="card-body">
+				<h4 class="card-title">{{t.name}}</h4>
+				<p class="card-text">{{t.desc}}</p>
+			</div>
+		</div>
+		{{/each}}
+	</div>
+
+	<h2>Risks and Challenges</h2>
+	<ul class="list-group">
+		{{#each risks as r, i}}
+		<p class="list-group-item text-left">{{r}}</p>
+		{{/each}}
+	</ul>
+
+	<h2>Prototype</h2>
+	<div class="col">
+		{{#each prototype_tasks as t, i}}
+		<div class="card">
+			<h4 class="card-title">
+				<a href="{{t.url}}" target="_blank">{{t.task}}</a>
+			</h4>
+			<h5>Context</h5>
+			<img alt="" src="{{t.ctx_photo_url}}" class="img-fluid" style="width:400px" />
+			<h5>Description</h5>
+			<ul class="list-group">
+				<p class="list-group-item text-left"><strong>Objective:</strong> {{t.desc.objective}}</p>
+				<p class="list-group-item text-left"><strong>Location:</strong> {{t.desc.location}}</p>
+				<p class="list-group-item text-left"><strong>Time:</strong> {{t.desc.time}}</p>
+					<strong>Prerequisites:</strong>
+					<ol>
+						{{#each t.desc.prereqs as p, j}}
+						<p>{{p}}</p>
+						{{/each}}
+					</ol>
+				<ul class="list-group-item text-left">
+					<strong>Walkthrough:</strong>
+					<div class="row">
+						{{#each t.steps as s, j}}
+						<div class="card" style="width:{{100.0/t.steps.length}}%;">
+							<img alt="" src="{{s.step_img_url}}" class="card-img-top" />
+							<h5 class="card-title text-center">Step {{s.number}}: {{s.desc}}</h5>
+						</div>
+						{{/each}}
+					</div>
+				</ul>
+			</ul>
+		</div>
+		{{/each}}
+	</div>
+</div>
+
+<style>
+	@import url('https://fonts.googleapis.com/css?family=Cabin');
+	.container {
+		text-align: center;
+		margin-top: 2rem;
+
+		font-family: Cabin, sans-serif;
+	}
+
+	h2 {
+		margin-top: 2rem;
+	}
+</style>
